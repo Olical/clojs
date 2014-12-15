@@ -1,14 +1,7 @@
-function walkArrays(item) {
-    if (Array.isArray(item)) {
-        return walk(item);
-    }
-    else {
-        return item;
-    }
-}
-
 function walk(tree) {
-    return tree[0].apply(null, tree.slice(1).map(walkArrays));
+    return tree[0].apply(null, tree.slice(1).map(function (n) {
+        return Array.isArray(n) ? walk(n) : n;
+    }));
 }
 
 // var res = walk(
