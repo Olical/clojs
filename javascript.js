@@ -40,17 +40,31 @@ function macro(fn) {
     return wrapped;
 }
 
-function $add(a, b) { return a + b; }
-var postfixNotation = macro(function (expr) {
-    var butLast = expr.slice(0, -1);
-    var last = expr.slice(-1);
-    return last.concat(butLast);
+
+
+function $mt (a, b) {
+    return a > b;
+}
+
+function $add (a, b) {
+    return a + b;
+}
+
+function str() {
+    return [].slice.call(arguments).join('');
+}
+
+function reduce(fn, list) {
+    return list.reduce(fn);
+}
+
+var $if = macro(function (expr, t, f) {
+    return unquote(expr) ? t : f;
 });
-var res = unquote([postfixNotation, [5, 5, $add]]);
+
+var res = unquote(
+    [$if, [$mt, 10, 20],
+        'Uh, well this is awkward.',
+        [str, 'EVERYTHING IS FINE, MOVE ALONG ', [reduce, $add, quote([1, 2, 3])]]]);
 
 console.log(res);
-
-// var res = walk(
-//     [$if, [$mt, 10, 20],
-//         "Uh, well this is awkward.",
-//         [str, "EVERYTHING IS FINE, MOVE ALONG ", [reduce, $add, [1, 2, 3]]]]);
