@@ -17,3 +17,11 @@ The following Clojure and JavaScript examples are equivalent. Both data structur
 Obviously the missing functions (`$mt`, `str`, `reduce` and `$add`. `$mt` means "more than") and the `$if` macro (yes, it's a macro. It manipulates the tree) are defined in the JavaScript file.
 
 This isn't exactly a library, just an experiment. I may well take it further one day though because I found it really interesting.
+
+## License
+
+This repository is licensed under [the unlicense](http://unlicense.org/), so you can basically do what you want. Find the full thing in the `UNLICENSE` file.
+
+>This is free and unencumbered software released into the public domain.
+>
+>Anyone is free to copy, modify, publish, use, compile, sell, or distribute this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means.
